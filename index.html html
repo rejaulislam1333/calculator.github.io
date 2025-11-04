@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Price Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Product Price Calculator</h1>
+      <nav>
+        <button class="tab-btn active" data-tab="roposo">Roposo</button>
+        <button class="tab-btn" data-tab="ecommerce">E‑Commerce</button>
+        <button class="tab-btn" data-tab="glowroad">Glowroad</button>
+        <a href="#" class="docs">Docs</a>
+      </nav>
+    </header>
+
+    <!-- ROPOSO -->
+    <div id="roposo" class="tab-content active">
+      <h2 class="platform-title">ROPOSO</h2>
+      <div class="calc-grid">
+        <!-- INPUTS -->
+        <div class="input-group"><label>Product Sourcing Cost:</label><input type="number" id="productCost" value="300" step="0.01"/><span>₹</span></div>
+        <div class="input-group"><label>Freight Charges:</label><input type="number" id="freight" value="120" step="0.01"/><span>₹</span></div>
+        <div class="input-group"><label>Selling Price:</label><input type="number" id="sellingPrice" value="899" step="0.01"/><span>₹</span></div>
+        <div class="input-group"><label>Order Cancellation Rate:</label><input type="number" id="cancelRate" value="10" step="0.01"/><span>%</span></div>
+        <div class="input-group"><label>Total Orders:</label><input type="number" id="totalOrders" value="100"/></div>
+        <div class="input-group"><label>RTO Charges:</label><input type="number" id="rtoCharges" value="80" step="0.01"/><span>₹</span></div>
+        <div class="input-group"><label>Ad Cost:</label><input type="number" id="adCost" value="200" step="0.01"/><span>₹</span></div>
+        <div class="input-group"><label>RTO Percentage:</label><input type="number" id="rtoPercent" value="30" step="0.01"/><span>%</span></div>
+
+        <!-- OUTPUTS -->
+        <div class="output-group"><label>Net Order After Cancellation:</label><span id="netOrders">90</span></div>
+        <div class="output-group"><label>RTO Order:</label><span id="rtoOrders">27</span></div>
+        <div class="output-group"><label>Delivered Order:</label><span id="deliveredOrders">63</span></div>
+        <div class="output-group"><label>Total Freight Charges:</label><span id="totalFreight">₹ 10800</span></div>
+        <div class="output-group"><label>Total Ad Cost:</label><span id="totalAdCost">₹ 20000</span></div>
+        <div class="output-group"><label>Average Ad Cost:</label><span id="avgAdCost">₹ 317.46031746031747</span></div>
+        <div class="output-group"><label>COD Remittance:</label><span id="codRemittance">₹ 56637</span></div>
+        <div class="output-group"><label>Net RTO Cost:</label><span id="netRtoCost">₹ 2160</span></div>
+        <div class="output-group"><label>Net Profit Per Product:</label><span id="profitPerProduct">₹ 75.62539682539675</span></div>
+        <div class="output-group"><label>Net Profit (Real):</label><span id="netProfitReal">₹ -3323.0000000000045</span></div>
+        <div class="output-group"><label>Revenue:</label><span id="revenue">₹ 89900</span></div>
+        <div class="output-group"><label>Net Profit:</label><span id="netProfit">₹ 4776.999999999995</span></div>
+        <div class="output-group"><label>Profit Percentage:</label><span id="profitPercent">5.313681868743043 %</span></div>
+        <div class="output-group"><label>ROI:</label><span id="roi">0.07966977985323541</span></div>
+      </div>
+    </div>
+
+    <!-- E‑COMMERCE (same inputs, different IDs) -->
+    <div id="ecommerce" class="tab-content">
+      <h2 class="platform-title">E‑Commerce</h2>
+      <div class="calc-grid">
+        <div class="input-group"><label>Product Sourcing Cost:</label><input type="number" class="shared-input" data-id="productCost" value="300"/><span>₹</span></div>
+        <div class="input-group"><label>Freight Charges:</label><input type="number" class="shared-input" data-id="freight" value="120"/><span>₹</span></div>
+        <div class="input-group"><label>Selling Price:</label><input type="number" class="shared-input" data-id="sellingPrice" value="899"/><span>₹</span></div>
+        <div class="input-group"><label>Order Cancellation Rate:</label><input type="number" class="shared-input" data-id="cancelRate" value="10"/><span>%</span></div>
+        <div class="input-group"><label>Total Orders:</label><input type="number" class="shared-input" data-id="totalOrders" value="100"/></div>
+        <div class="input-group"><label>RTO Charges:</label><input type="number" class="shared-input" data-id="rtoCharges" value="80"/><span>₹</span></div>
+        <div class="input-group"><label>Ad Cost:</label><input type="number" class="shared-input" data-id="adCost" value="200"/><span>₹</span></div>
+        <div class="input-group"><label>RTO Percentage:</label><input type="number" class="shared-input" data-id="rtoPercent" value="30"/><span>%</span></div>
+
+        <div class="output-group"><label>Net Order After Cancellation:</label><span id="ec-netOrders"></span></div>
+        <div class="output-group"><label>RTO Order:</label><span id="ec-rtoOrders"></span></div>
+        <div class="output-group"><label>Delivered Order:</label><span id="ec-deliveredOrders"></span></div>
+        <div class="output-group"><label>Total Freight Charges:</label><span id="ec-totalFreight"></span></div>
+        <div class="output-group"><label>Total Ad Cost:</label><span id="ec-totalAdCost"></span></div>
+        <div class="output-group"><label>Average Ad Cost:</label><span id="ec-avgAdCost"></span></div>
+        <div class="output-group"><label>COD Remittance:</label><span id="ec-codRemittance"></span></div>
+        <div class="output-group"><label>Net RTO Cost:</label><span id="ec-netRtoCost"></span></div>
+        <div class="output-group"><label>Average RTO Cost:</label><span id="ec-avgRtoCost"></span></div>
+        <div class="output-group"><label>Average Freight Charges:</label><span id="ec-avgFreight"></span></div>
+        <div class="output-group"><label>Net Profit Per Product:</label><span id="ec-profitPerProduct"></span></div>
+        <div class="output-group"><label>Net Profit:</label><span id="ec-netProfit"></span></div>
+        <div class="output-group"><label>Net Profit (Real):</label><span id="ec-netProfitReal"></span></div>
+        <div class="output-group"><label>Revenue:</label><span id="ec-revenue"></span></div>
+        <div class="output-group"><label>Profit Percentage:</label><span id="ec-profitPercent"></span></div>
+        <div class="output-group"><label>Net Cost:</label><span id="ec-netCost"></span></div>
+        <div class="output-group"><label>ROI:</label><span id="ec-roi"></span></div>
+      </div>
+    </div>
+
+    <!-- GLOWROAD (same as E‑Commerce) -->
+    <div id="glowroad" class="tab-content">
+      <h2 class="platform-title">GLOWROAD</h2>
+      <div class="calc-grid">
+        <div class="input-group"><label>Product Sourcing Cost:</label><input type="number" class="shared-input" data-id="productCost" value="300"/><span>₹</span></div>
+        <div class="input-group"><label>Freight Charges:</label><input type="number" class="shared-input" data-id="freight" value="120"/><span>₹</span></div>
+        <div class="input-group"><label>Selling Price:</label><input type="number" class="shared-input" data-id="sellingPrice" value="899"/><span>₹</span></div>
+        <div class="input-group"><label>Order Cancellation Rate:</label><input type="number" class="shared-input" data-id="cancelRate" value="10"/><span>%</span></div>
+        <div class="input-group"><label>Total Orders:</label><input type="number" class="shared-input" data-id="totalOrders" value="100"/></div>
+        <div class="input-group"><label>RTO Charges:</label><input type="number" class="shared-input" data-id="rtoCharges" value="80"/><span>₹</span></div>
+        <div class="input-group"><label>Ad Cost:</label><input type="number" class="shared-input" data-id="adCost" value="200"/><span>₹</span></div>
+        <div class="input-group"><label>RTO Percentage:</label><input type="number" class="shared-input" data-id="rtoPercent" value="30"/><span>%</span></div>
+
+        <div class="output-group"><label>Net Order After Cancellation:</label><span id="gr-netOrders"></span></div>
+        <div class="output-group"><label>RTO Order:</label><span id="gr-rtoOrders"></span></div>
+        <div class="output-group"><label>Delivered Order:</label><span id="gr-deliveredOrders"></span></div>
+        <div class="output-group"><label>Total Freight Charges:</label><span id="gr-totalFreight"></span></div>
+        <div class="output-group"><label>Total Ad Cost:</label><span id="gr-totalAdCost"></span></div>
+        <div class="output-group"><label>Average Ad Cost:</label><span id="gr-avgAdCost"></span></div>
+        <div class="output-group"><label>COD Remittance:</label><span id="gr-codRemittance"></span></div>
+        <div class="output-group"><label>Net RTO Cost:</label><span id="gr-netRtoCost"></span></div>
+        <div class="output-group"><label>Average RTO Cost:</label><span id="gr-avgRtoCost"></span></div>
+        <div class="output-group"><label>Average Freight Charges:</label><span id="gr-avgFreight"></span></div>
+        <div class="output-group"><label>Net Profit Per Product:</label><span id="gr-profitPerProduct"></span></div>
+        <div class="output-group"><label>Net Profit:</label><span id="gr-netProfit"></span></div>
+        <div class="output-group"><label>Net Profit (Real):</label><span id="gr-netProfitReal"></span></div>
+        <div class="output-group"><label>Revenue:</label><span id="gr-revenue"></span></div>
+        <div class="output-group"><label>Profit Percentage:</label><span id="gr-profitPercent"></span></div>
+        <div class="output-group"><label>Net Cost:</label><span id="gr-netCost"></span></div>
+        <div class="output-group"><label>ROI:</label><span id="gr-roi"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
